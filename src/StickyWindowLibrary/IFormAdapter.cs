@@ -15,14 +15,10 @@
 
 
 using System;
-using System.Collections.Generic;
 using System.Drawing;
-using System.Text;
 
-namespace StickyWindowLibrary
-{
-    public interface IFormAdapter
-    {
+namespace StickyWindowLibrary {
+    public interface IFormAdapter {
         IntPtr Handle { get; }
         Rectangle Bounds { get; set; }
         Size MaximumSize { get; set; }

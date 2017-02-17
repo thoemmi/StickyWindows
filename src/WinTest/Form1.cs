@@ -1,26 +1,20 @@
 using System;
-using System.Drawing;
-using System.Collections;
 using System.ComponentModel;
 using System.Windows.Forms;
-using System.Data;
-using StickyWindowLibrary;
 
-namespace WinTest
-{
+namespace WinTest {
     /// <summary>
     /// Summary description for Form1.
     /// </summary>
-    public class Form1 : System.Windows.Forms.Form
-    {
-        private System.Windows.Forms.Button button1;
+    public class Form1 : Form {
+        private Button button1;
+
         /// <summary>
         /// Required designer variable.
         /// </summary>
-        private System.ComponentModel.Container components = null;
+        private Container components = null;
 
-        public Form1()
-        {
+        public Form1() {
             //
             // Required for Windows Form Designer support
             //
@@ -36,25 +30,22 @@ namespace WinTest
         /// <summary>
         /// Clean up any resources being used.
         /// </summary>
-        protected override void Dispose( bool disposing )
-        {
-            if( disposing )
-            {
-                if (components != null) 
-                {
+        protected override void Dispose(bool disposing) {
+            if (disposing) {
+                if (components != null) {
                     components.Dispose();
                 }
             }
-            base.Dispose( disposing );
+            base.Dispose(disposing);
         }
 
         #region Windows Form Designer generated code
+
         /// <summary>
         /// Required method for Designer support - do not modify
         /// the contents of this method with the code editor.
         /// </summary>
-        private void InitializeComponent()
-        {
+        private void InitializeComponent() {
             this.button1 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
@@ -75,22 +66,20 @@ namespace WinTest
             this.Name = "Form1";
             this.Text = "Form1";
             this.ResumeLayout(false);
-
         }
+
         #endregion
 
         /// <summary>
         /// The main entry point for the application.
         /// </summary>
         [STAThread]
-        static void Main() 
-        {
+        private static void Main() {
             Application.Run(new Form1());
         }
 
-        private void button1_Click(object sender, System.EventArgs e)
-        {
-            Form2 ff = new Form2();
+        private void button1_Click(object sender, EventArgs e) {
+            var ff = new Form2();
             ff.Show();
         }
     }

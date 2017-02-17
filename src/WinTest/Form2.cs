@@ -1,62 +1,53 @@
 using System;
-using System.Drawing;
-using System.Collections;
 using System.ComponentModel;
 using System.Windows.Forms;
-
 using Blue.Windows;
-using StickyWindowLibrary;
 
-namespace WinTest
-{
+namespace WinTest {
     /// <summary>
     /// Summary description for Form2.
     /// </summary>
-    public class Form2 : System.Windows.Forms.Form
-    {
-        private StickyWindow	stickyWindow;
+    public class Form2 : Form {
+        private StickyWindow stickyWindow;
 
-        private System.Windows.Forms.CheckBox checkStickToScreen;
-        private System.Windows.Forms.CheckBox checkStickToOthers;
-        private System.Windows.Forms.CheckBox checkStickOnResize;
-        private System.Windows.Forms.CheckBox checkStickOnMove;
+        private CheckBox checkStickToScreen;
+        private CheckBox checkStickToOthers;
+        private CheckBox checkStickOnResize;
+        private CheckBox checkStickOnMove;
+
         /// <summary>
         /// Required designer variable.
         /// </summary>
-        private System.ComponentModel.Container components = null;
+        private Container components = null;
 
-        public Form2()
-        {
+        public Form2() {
             InitializeComponent();
-            stickyWindow = new StickyWindow( this );
-            checkStickOnMove.Checked	= stickyWindow.StickOnMove;
-            checkStickOnResize.Checked	= stickyWindow.StickOnResize;
-            checkStickToOthers.Checked	= stickyWindow.StickToOther;
-            checkStickToScreen.Checked	= stickyWindow.StickToScreen;
+            stickyWindow = new StickyWindow(this);
+            checkStickOnMove.Checked = stickyWindow.StickOnMove;
+            checkStickOnResize.Checked = stickyWindow.StickOnResize;
+            checkStickToOthers.Checked = stickyWindow.StickToOther;
+            checkStickToScreen.Checked = stickyWindow.StickToScreen;
         }
 
         /// <summary>
         /// Clean up any resources being used.
         /// </summary>
-        protected override void Dispose( bool disposing )
-        {
-            if( disposing )
-            {
-                if(components != null)
-                {
+        protected override void Dispose(bool disposing) {
+            if (disposing) {
+                if (components != null) {
                     components.Dispose();
                 }
             }
-            base.Dispose( disposing );
+            base.Dispose(disposing);
         }
 
         #region Windows Form Designer generated code
+
         /// <summary>
         /// Required method for Designer support - do not modify
         /// the contents of this method with the code editor.
         /// </summary>
-        private void InitializeComponent()
-        {
+        private void InitializeComponent() {
             this.checkStickToScreen = new System.Windows.Forms.CheckBox();
             this.checkStickToOthers = new System.Windows.Forms.CheckBox();
             this.checkStickOnResize = new System.Windows.Forms.CheckBox();
@@ -112,31 +103,25 @@ namespace WinTest
             this.Text = "Form2";
             this.Load += new System.EventHandler(this.Form2_Load);
             this.ResumeLayout(false);
-
         }
+
         #endregion
 
-        private void Form2_Load(object sender, System.EventArgs e)
-        {
-        }
+        private void Form2_Load(object sender, EventArgs e) {}
 
-        private void checkStickToScreen_CheckedChanged(object sender, System.EventArgs e)
-        {
+        private void checkStickToScreen_CheckedChanged(object sender, EventArgs e) {
             stickyWindow.StickToScreen = checkStickToScreen.Checked;
         }
 
-        private void checkStickToOthers_CheckedChanged(object sender, System.EventArgs e)
-        {
+        private void checkStickToOthers_CheckedChanged(object sender, EventArgs e) {
             stickyWindow.StickToOther = checkStickToOthers.Checked;
         }
 
-        private void checkStickOnResize_CheckedChanged(object sender, System.EventArgs e)
-        {
+        private void checkStickOnResize_CheckedChanged(object sender, EventArgs e) {
             stickyWindow.StickOnResize = checkStickOnResize.Checked;
         }
 
-        private void checkStickOnMove_CheckedChanged(object sender, System.EventArgs e)
-        {
+        private void checkStickOnMove_CheckedChanged(object sender, EventArgs e) {
             stickyWindow.StickOnMove = checkStickOnMove.Checked;
         }
     }

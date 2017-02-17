@@ -18,55 +18,45 @@ using System;
 using System.Drawing;
 using System.Windows.Forms;
 
-namespace StickyWindowLibrary
-{
-    public class WinFormAdapter : IFormAdapter
-    {
+namespace StickyWindowLibrary {
+    public class WinFormAdapter : IFormAdapter {
         private readonly Form _form;
 
-        public WinFormAdapter(Form form)
-        {
+        public WinFormAdapter(Form form) {
             _form = form;
         }
 
         #region IFormAdapter Members
 
-        public IntPtr Handle
-        {
+        public IntPtr Handle {
             get { return _form.Handle; }
         }
 
-        public Rectangle Bounds
-        {
+        public Rectangle Bounds {
             get { return _form.Bounds; }
             set { _form.Bounds = value; }
         }
 
-        public Size MaximumSize
-        {
+        public Size MaximumSize {
             get { return _form.MaximumSize; }
             set { _form.MaximumSize = value; }
         }
 
-        public Size MinimumSize
-        {
+        public Size MinimumSize {
             get { return _form.MinimumSize; }
             set { _form.MinimumSize = value; }
         }
 
-        public bool Capture
-        {
+        public bool Capture {
             get { return _form.Capture; }
             set { _form.Capture = value; }
         }
 
-        public void Activate()
-        {
+        public void Activate() {
             _form.Activate();
         }
 
-        public Point PointToScreen(Point point)
-        {
+        public Point PointToScreen(Point point) {
             return _form.PointToScreen(point);
         }
 
