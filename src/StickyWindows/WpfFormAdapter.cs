@@ -32,11 +32,7 @@ namespace StickyWindows {
             _window = window;
         }
 
-        #region IFormAdapter Members
-
-        public IntPtr Handle {
-            get { return new WindowInteropHelper(_window).Handle; }
-        }
+        public IntPtr Handle => new WindowInteropHelper(_window).Handle;
 
         public Rectangle Bounds {
             get {
@@ -44,7 +40,7 @@ namespace StickyWindows {
                 var widthHeightPointConverted = fromRelativeToDevice(_window.ActualWidth, _window.ActualHeight, _window);
 
                 // converti coordinate da relative a screen: la libreria lavora con quelle
-                var origin = getWindowOrigin();
+                var origin = GetWindowOrigin();
                 var pStart = PointToScreen(origin);
                 var pEnd = PointToScreen(origin + new Size(Convert.ToInt32(widthHeightPointConverted.X), Convert.ToInt32(widthHeightPointConverted.Y)));
                 pEnd.Offset(-pStart.X, -pStart.Y); // ora pend rappresenta width + height
@@ -56,7 +52,7 @@ namespace StickyWindows {
                 // converti width ed height a relative
                 var widthHeightPointConverted = fromDeviceToRelative(value.Width, value.Height, _window);
                 // converti coordinate da screen a relative: il video non si deve alterare!
-                var origin = getWindowOrigin();
+                var origin = GetWindowOrigin();
                 var screenPointRef = new Point(-origin.X + value.X, -origin.Y + value.Y);
                 var pStart = PointFromScreen(new Point(screenPointRef.X, screenPointRef.Y));
 
@@ -103,11 +99,7 @@ namespace StickyWindows {
             return resultScaled;
         }
 
-        #endregion
-
-        #region Utility Methods
-
-        private Point getWindowOrigin() {
+        private Point GetWindowOrigin() {
             // TODO: alla prima invocazione far andare in cache per migliorare perf ed evitare errori di approx
             //return new Point(-4, -28);
             if (!_origin.HasValue) {
@@ -142,7 +134,5 @@ namespace StickyWindows {
         private static Point ToWinPoint(System.Windows.Point point) {
             return new Point(Convert.ToInt32(point.X), Convert.ToInt32(point.Y));
         }
-
-        #endregion
     }
 }

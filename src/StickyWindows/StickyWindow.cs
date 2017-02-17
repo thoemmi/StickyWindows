@@ -32,8 +32,6 @@ namespace StickyWindows {
         /// </summary>
         private static readonly List<IFormAdapter> _globalStickyWindows = new List<IFormAdapter>();
 
-        #region ResizeDir
-
         [Flags]
         private enum ResizeDir {
             Top = 2,
@@ -41,10 +39,6 @@ namespace StickyWindows {
             Left = 8,
             Right = 16
         }
-
-        #endregion
-
-        #region Message Processor
 
         // Internal Message Processor
         private delegate bool ProcessMessage(ref Message m);
@@ -56,10 +50,6 @@ namespace StickyWindows {
 
         private readonly ProcessMessage _moveMessageProcessor;
         private readonly ProcessMessage _resizeMessageProcessor;
-
-        #endregion
-
-        #region Internal properties
 
         // Move stuff
         private bool _movingForm;
@@ -80,12 +70,8 @@ namespace StickyWindows {
         private Rectangle _formRect; // form bounds
         private Rectangle _formOriginalRect; // bounds before last operation started
 
-        #endregion
-
         // public properties
         private static int _stickGap = 20; // distance to stick
-
-        #region Public operations and properties
 
         /// <summary>
         /// Allow the form to stick while resizing
@@ -150,11 +136,6 @@ namespace StickyWindows {
             _globalStickyWindows.Remove(frmExternal);
         }
 
-        #endregion
-
-
-        #region StickyWindow Constructor
-
         /// <summary>
         /// Make the form Sticky
         /// </summary>
@@ -199,10 +180,6 @@ namespace StickyWindows {
             AssignHandle(_originalForm.Handle);
         }
 
-        #endregion
-
-        #region OnHandleChange
-
         [System.Security.Permissions.PermissionSet(System.Security.Permissions.SecurityAction.Demand, Name = "FullTrust")]
         protected override void OnHandleChange() {
             if ((int)Handle != 0) {
@@ -212,20 +189,12 @@ namespace StickyWindows {
             }
         }
 
-        #endregion
-
-        #region WndProc
-
         [System.Security.Permissions.PermissionSet(System.Security.Permissions.SecurityAction.Demand, Name = "FullTrust")]
         protected override void WndProc(ref Message m) {
             if (!_messageProcessor(ref m)) {
                 base.WndProc(ref m);
             }
         }
-
-        #endregion
-
-        #region DefaultMsgProcessor
 
         /// <summary>
         /// Processes messages during normal operations (while the form is not resized or moved)
@@ -249,10 +218,6 @@ namespace StickyWindows {
 
             return false;
         }
-
-        #endregion
-
-        #region OnNCLButtonDown
 
         /// <summary>
         /// Checks where the click was in the NC area and starts move or resize operation
@@ -296,10 +261,6 @@ namespace StickyWindows {
 
             return false;
         }
-
-        #endregion
-
-        #region ResizeOperations
 
         private bool StartResize(ResizeDir resDir) {
             if (StickOnResize) {
@@ -352,10 +313,6 @@ namespace StickyWindows {
         private void EndResize() {
             Cancel();
         }
-
-        #endregion
-
-        #region Resize Computing
 
         private void Resize(Point p) {
             p = _originalForm.PointToScreen(p);
@@ -500,10 +457,6 @@ namespace StickyWindows {
             }
         }
 
-        #endregion
-
-        #region Move Operations
-
         private void StartMove() {
             _formRect = _originalForm.Bounds;
             _formOriginalRect = _originalForm.Bounds; // save original position
@@ -550,10 +503,6 @@ namespace StickyWindows {
         private void EndMove() {
             Cancel();
         }
-
-        #endregion
-
-        #region Move Computing
 
         private void Move(Point p) {
             p = _originalForm.PointToScreen(p);
@@ -651,10 +600,6 @@ namespace StickyWindows {
             }
         }
 
-        #endregion
-
-        #region Utilities
-
         private static int NormalizeInside(int iP1, int iM1, int iM2) {
             if (iP1 <= iM1) {
                 return iM1;
@@ -665,17 +610,11 @@ namespace StickyWindows {
             return iP1;
         }
 
-        #endregion
-
-        #region Cancel
-
         private void Cancel() {
             _originalForm.Capture = false;
             _movingForm = false;
             _resizingForm = false;
             _messageProcessor = _defaultMessageProcessor;
         }
-
-        #endregion
     }
 }

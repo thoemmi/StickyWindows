@@ -26,11 +26,7 @@ namespace StickyWindows {
             _form = form;
         }
 
-        #region IFormAdapter Members
-
-        public IntPtr Handle {
-            get { return _form.Handle; }
-        }
+        public IntPtr Handle => _form.Handle;
 
         public Rectangle Bounds {
             get { return _form.Bounds; }
@@ -59,7 +55,5 @@ namespace StickyWindows {
         public Point PointToScreen(Point point) {
             return _form.PointToScreen(point);
         }
-
-        #endregion
     }
 }
