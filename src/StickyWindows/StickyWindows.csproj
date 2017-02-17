@@ -8,8 +8,8 @@
     <ProjectGuid>{AF76FEA7-CD9D-4093-B617-BC9C44DE99C6}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>StickyWindowLibrary</RootNamespace>
-    <AssemblyName>StickyWindow</AssemblyName>
+    <RootNamespace>StickyWindows</RootNamespace>
+    <AssemblyName>StickyWindows</AssemblyName>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <StartupObject>

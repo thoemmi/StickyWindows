@@ -7,7 +7,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WinTest", "WinTest\WinTest.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WpfTest", "WpfTest\WpfTest.csproj", "{EDC6DE6A-C1EA-4192-AB34-63E6F4E6A835}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StickyWindowLibrary", "StickyWindowLibrary\StickyWindowLibrary.csproj", "{AF76FEA7-CD9D-4093-B617-BC9C44DE99C6}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StickyWindows", "StickyWindows\StickyWindows.csproj", "{AF76FEA7-CD9D-4093-B617-BC9C44DE99C6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

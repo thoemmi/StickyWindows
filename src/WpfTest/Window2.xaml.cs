@@ -1,5 +1,5 @@
 ﻿using System.Windows;
-using Blue.Windows;
+using StickyWindows;
 
 namespace WpfTest {
     /// <summary>

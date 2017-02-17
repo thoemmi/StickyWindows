@@ -18,7 +18,7 @@ using System;
 using System.Drawing;
 using System.Windows.Forms;
 
-namespace StickyWindowLibrary {
+namespace StickyWindows {
     public class WinFormAdapter : IFormAdapter {
         private readonly Form _form;
 

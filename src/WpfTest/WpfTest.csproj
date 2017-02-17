@@ -103,7 +103,7 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\StickyWindowLibrary\StickyWindowLibrary.csproj">
+    <ProjectReference Include="..\StickyWindows\StickyWindows.csproj">
       <Project>{AF76FEA7-CD9D-4093-B617-BC9C44DE99C6}</Project>
       <Name>StickyWindowLibrary</Name>
     </ProjectReference>

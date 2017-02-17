@@ -24,7 +24,7 @@ namespace WinTest {
             // TODO: Add any constructor code after InitializeComponent call
             //
 
-            Blue.Windows.StickyWindow.RegisterExternalReferenceForm(this);
+            StickyWindows.StickyWindow.RegisterExternalReferenceForm(this);
         }
 
         /// <summary>

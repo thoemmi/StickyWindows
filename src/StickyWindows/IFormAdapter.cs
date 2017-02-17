@@ -17,7 +17,7 @@
 using System;
 using System.Drawing;
 
-namespace StickyWindowLibrary {
+namespace StickyWindows {
     public interface IFormAdapter {
         IntPtr Handle { get; }
         Rectangle Bounds { get; set; }

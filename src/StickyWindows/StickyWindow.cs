@@ -19,10 +19,8 @@ using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
-using Blue.Private.Win32Imports;
-using StickyWindowLibrary;
 
-namespace Blue.Windows {
+namespace StickyWindows {
     /// <summary>
     /// A windows that Sticks to other windows of the same type when moved or resized.
     /// You get a nice way of organizing multiple top-level windows.

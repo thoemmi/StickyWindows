@@ -1,7 +1,7 @@
 using System;
 using System.ComponentModel;
 using System.Windows.Forms;
-using Blue.Windows;
+using StickyWindows;
 
 namespace WinTest {
     /// <summary>

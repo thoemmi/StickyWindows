@@ -1,7 +1,7 @@
 using System;
 using System.Runtime.InteropServices;
 
-namespace Blue.Private.Win32Imports {
+namespace StickyWindows {
     /// <summary>
     /// Win32 is just a placeholder for some Win32 imported definitions
     /// </summary>
