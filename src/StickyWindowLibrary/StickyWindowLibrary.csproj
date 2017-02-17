@@ -69,6 +69,7 @@
     <Compile Include="IFormAdapter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="StickyWindow.cs" />
+    <Compile Include="Win32.cs" />
     <Compile Include="WinFormAdapter.cs" />
     <Compile Include="WpfFormAdapter.cs" />
   </ItemGroup>

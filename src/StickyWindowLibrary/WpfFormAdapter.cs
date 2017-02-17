@@ -98,7 +98,7 @@ namespace StickyWindowLibrary {
 
         public Point PointToScreen(Point pointWin) {
             var p = new System.Windows.Point();
-            var resultWpf = toWinPoint(_window.PointToScreen(p));
+            var resultWpf = ToWinPoint(_window.PointToScreen(p));
             var resultScaled = resultWpf + new Size(pointWin);
             return resultScaled;
         }
@@ -112,7 +112,7 @@ namespace StickyWindowLibrary {
             //return new Point(-4, -28);
             if (!_origin.HasValue) {
                 var currentWinPointConverted = fromRelativeToDevice(-_window.Left, -_window.Top, _window);
-                var locationFromScreen = PointToScreen(toWinPoint(currentWinPointConverted));
+                var locationFromScreen = PointToScreen(ToWinPoint(currentWinPointConverted));
                 _origin = new Point(-locationFromScreen.X, -locationFromScreen.Y);
             }
 
@@ -122,24 +122,24 @@ namespace StickyWindowLibrary {
         private static System.Windows.Point fromDeviceToRelative(double x, double y, Visual workingVisual) {
             var widthHeightPoint = new Point(Convert.ToInt32(x), Convert.ToInt32(y));
             var source = PresentationSource.FromVisual(workingVisual);
-            return source.CompositionTarget.TransformFromDevice.Transform(toWpfPoint(widthHeightPoint));
+            return source.CompositionTarget.TransformFromDevice.Transform(ToWpfPoint(widthHeightPoint));
         }
 
         private static System.Windows.Point fromRelativeToDevice(double x, double y, Visual workingVisual) {
             var widthHeightPoint = new Point(Convert.ToInt32(x), Convert.ToInt32(y));
             var source = PresentationSource.FromVisual(workingVisual);
-            return source.CompositionTarget.TransformToDevice.Transform(toWpfPoint(widthHeightPoint));
+            return source.CompositionTarget.TransformToDevice.Transform(ToWpfPoint(widthHeightPoint));
         }
 
-        public Point PointFromScreen(Point pointWin) {
-            return toWinPoint(_window.PointFromScreen(toWpfPoint(pointWin)));
+        private Point PointFromScreen(Point pointWin) {
+            return ToWinPoint(_window.PointFromScreen(ToWpfPoint(pointWin)));
         }
 
-        private static System.Windows.Point toWpfPoint(Point point) {
+        private static System.Windows.Point ToWpfPoint(Point point) {
             return new System.Windows.Point(point.X, point.Y);
         }
 
-        private static Point toWinPoint(System.Windows.Point point) {
+        private static Point ToWinPoint(System.Windows.Point point) {
             return new Point(Convert.ToInt32(point.X), Convert.ToInt32(point.Y));
         }
 
