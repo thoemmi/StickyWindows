@@ -37,7 +37,7 @@ namespace StickyWindows.WPF {
         public Rectangle Bounds {
             get {
                 // converti width ed height ad absolute
-                var widthHeightPointConverted = fromRelativeToDevice(_window.ActualWidth, _window.ActualHeight, _window);
+                var widthHeightPointConverted = FromRelativeToDevice(_window.ActualWidth, _window.ActualHeight, _window);
 
                 // converti coordinate da relative a screen: la libreria lavora con quelle
                 var origin = GetWindowOrigin();
@@ -50,7 +50,7 @@ namespace StickyWindows.WPF {
             }
             set {
                 // converti width ed height a relative
-                var widthHeightPointConverted = fromDeviceToRelative(value.Width, value.Height, _window);
+                var widthHeightPointConverted = FromDeviceToRelative(value.Width, value.Height, _window);
                 // converti coordinate da screen a relative: il video non si deve alterare!
                 var origin = GetWindowOrigin();
                 var screenPointRef = new Point(-origin.X + value.X, -origin.Y + value.Y);
@@ -103,7 +103,7 @@ namespace StickyWindows.WPF {
             // TODO: alla prima invocazione far andare in cache per migliorare perf ed evitare errori di approx
             //return new Point(-4, -28);
             if (!_origin.HasValue) {
-                var currentWinPointConverted = fromRelativeToDevice(-_window.Left, -_window.Top, _window);
+                var currentWinPointConverted = FromRelativeToDevice(-_window.Left, -_window.Top, _window);
                 var locationFromScreen = PointToScreen(ToWinPoint(currentWinPointConverted));
                 _origin = new Point(-locationFromScreen.X, -locationFromScreen.Y);
             }
@@ -111,13 +111,13 @@ namespace StickyWindows.WPF {
             return _origin.Value;
         }
 
-        private static System.Windows.Point fromDeviceToRelative(double x, double y, Visual workingVisual) {
+        private static System.Windows.Point FromDeviceToRelative(double x, double y, Visual workingVisual) {
             var widthHeightPoint = new Point(Convert.ToInt32(x), Convert.ToInt32(y));
             var source = PresentationSource.FromVisual(workingVisual);
             return source.CompositionTarget.TransformFromDevice.Transform(ToWpfPoint(widthHeightPoint));
         }
 
-        private static System.Windows.Point fromRelativeToDevice(double x, double y, Visual workingVisual) {
+        private static System.Windows.Point FromRelativeToDevice(double x, double y, Visual workingVisual) {
             var widthHeightPoint = new Point(Convert.ToInt32(x), Convert.ToInt32(y));
             var source = PresentationSource.FromVisual(workingVisual);
             return source.CompositionTarget.TransformToDevice.Transform(ToWpfPoint(widthHeightPoint));
