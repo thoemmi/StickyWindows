@@ -23,7 +23,7 @@ using System.Windows.Media;
 using Point = System.Drawing.Point;
 using Size = System.Drawing.Size;
 
-namespace StickyWindows {
+namespace StickyWindows.WPF {
     public class WpfFormAdapter : IFormAdapter {
         private readonly Window _window;
         private Point? _origin;

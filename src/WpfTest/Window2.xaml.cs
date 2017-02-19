@@ -1,5 +1,6 @@
 ﻿using System.Windows;
 using StickyWindows;
+using StickyWindows.WPF;
 
 namespace WpfTest {
     /// <summary>
@@ -14,7 +15,7 @@ namespace WpfTest {
         }
 
         private void window1Loaded(object sender, RoutedEventArgs e) {
-            _stickyWindow = new StickyWindow(this);
+            _stickyWindow = this.CreateStickyWindow();
             _stickyWindow.StickToScreen = true;
             _stickyWindow.StickToOther = true;
             _stickyWindow.StickOnResize = true;

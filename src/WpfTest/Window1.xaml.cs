@@ -1,5 +1,6 @@
 ﻿using System.Windows;
 using StickyWindows;
+using StickyWindows.WPF;
 
 namespace WpfTest {
     /// <summary>
@@ -12,7 +13,7 @@ namespace WpfTest {
         }
 
         private void window1Loaded(object sender, RoutedEventArgs e) {
-            StickyWindow.RegisterExternalReferenceForm(this);
+            this.RegisterExternalReferenceForm();
         }
 
 

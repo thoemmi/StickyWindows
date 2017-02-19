@@ -118,16 +118,6 @@ namespace StickyWindows {
         }
 
         /// <summary>
-        /// Register a new window as an external reference form.
-        /// All Sticky windows will try to stick to the external references
-        /// Use this to register your MainFrame so the child windows try to stick to it, when your MainFrame is NOT a sticky window
-        /// </summary>
-        /// <param name="winExternal">External window that will be used as reference</param>
-        public static void RegisterExternalReferenceForm(System.Windows.Window winExternal) {
-            RegisterExternalReferenceForm(new WpfFormAdapter(winExternal));
-        }
-
-        /// <summary>
         /// Unregister a form from the external references.
         /// <see cref="RegisterExternalReferenceForm(IFormAdapter)"/>
         /// </summary>
@@ -142,13 +132,6 @@ namespace StickyWindows {
         /// <param name="form">Form to be made sticky</param>
         public StickyWindow(Form form)
             : this(new WinFormAdapter(form)) {}
-
-        /// <summary>
-        /// Make the window Sticky
-        /// </summary>
-        /// <param name="window">Window to be made sticky</param>
-        public StickyWindow(System.Windows.Window window)
-            : this(new WpfFormAdapter(window)) {}
 
         /// <summary>
         /// Make the form Sticky
