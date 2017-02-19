@@ -1,0 +1,14 @@
+image: Visual Studio 2017 RC
+configuration: Release
+
+install:
+  - choco install gitversion.portable -pre -y
+
+before_build:
+  - cmd: gitversion /l console /output buildserver
+
+build_script:
+  - cmd: msbuild /t:restore;build;pack /p:Configuration=%CONFIGURATION%;Version=%GitVersion_NuGetVersion% src\StickyWindows.sln
+
+artifacts:
+  - path: '**\*.nupkg'
