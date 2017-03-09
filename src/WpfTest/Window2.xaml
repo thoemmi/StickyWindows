@@ -1,8 +1,28 @@
-﻿<Window x:Class="WpfTest.Window2"
+﻿<Window
+    x:Class="WpfTest.Window2"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    Title="Window2" Height="300" Width="300" MaxHeight="400" MaxWidth="400">
-    <Grid>
-        
-    </Grid>
+    Title="Window2"
+    Width="300"
+    Height="300"
+    MaxWidth="400"
+    MaxHeight="400">
+    <StackPanel>
+        <CheckBox
+            Margin="5"
+            Content="Stick to screen"
+            IsChecked="{Binding RelativeSource={RelativeSource AncestorType=Window}, Path=StickToScreen}" />
+        <CheckBox
+            Margin="5"
+            Content="Stick to other"
+            IsChecked="{Binding RelativeSource={RelativeSource AncestorType=Window}, Path=StickToOther}" />
+        <CheckBox
+            Margin="5"
+            Content="Stick on resize"
+            IsChecked="{Binding RelativeSource={RelativeSource AncestorType=Window}, Path=StickOnResize}" />
+        <CheckBox
+            Margin="5"
+            Content="Stick on move"
+            IsChecked="{Binding RelativeSource={RelativeSource AncestorType=Window}, Path=StickOnMove}" />
+    </StackPanel>
 </Window>

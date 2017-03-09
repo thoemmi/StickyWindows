@@ -21,5 +21,25 @@ namespace WpfTest {
             _stickyWindow.StickOnResize = true;
             _stickyWindow.StickOnMove = true;
         }
+
+        public bool StickToScreen {
+            get => _stickyWindow?.StickToScreen ?? true;
+            set => _stickyWindow.StickToScreen = value;
+        }
+
+        public bool StickToOther {
+            get => _stickyWindow?.StickToOther ?? true;
+            set => _stickyWindow.StickToOther = value;
+        }
+
+        public bool StickOnResize {
+            get => _stickyWindow?.StickOnResize ?? true;
+            set => _stickyWindow.StickOnResize = value;
+        }
+
+        public bool StickOnMove {
+            get => _stickyWindow?.StickOnMove ?? true;
+            set => _stickyWindow.StickOnMove = value;
+        }
     }
 }
