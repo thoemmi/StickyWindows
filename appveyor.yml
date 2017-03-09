@@ -8,7 +8,7 @@ before_build:
   - cmd: gitversion /l console /output buildserver
 
 build_script:
-  - cmd: msbuild /t:restore;build;pack /p:Configuration=%CONFIGURATION%;Version=%GitVersion_NuGetVersion% src\StickyWindows.sln
+  - cmd: msbuild /t:restore;build;pack /p:Configuration=%CONFIGURATION% src\StickyWindows.sln
 
 artifacts:
   - path: '**\*.nupkg'

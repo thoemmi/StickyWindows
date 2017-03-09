@@ -6,25 +6,12 @@
     <Company>thoemmi</Company>
     <Copyright>Copyright © Corneliu I. Tusnea, Riccardo Pietrucci, Thomas Freudenberg 2017</Copyright>
     <PackageTags>Window Sticky WinForms</PackageTags>
-
-    <UpdateAssemblyInfo>false</UpdateAssemblyInfo>
   </PropertyGroup>
-
-  <!-- GitVersion -->
   <ItemGroup>
-    <PackageReference Include="GitVersionTask" Version="4.0.0-beta0009">
+    <PackageReference Include="GitVersionTask" Version="4.0.0-beta0011">
       <PrivateAssets>All</PrivateAssets>
     </PackageReference>
   </ItemGroup>
-  <Target Name="UpdateVersionVars" AfterTargets="GetVersion">
-    <Message Text="SemVer: $(GitVersion_SemVer)" Importance="High" />
-    <PropertyGroup>
-      <Version>$(GitVersion_SemVer)</Version>
-      <FileVersion>$(GitVersion_AssemblySemVer)</FileVersion>
-      <AssemblyVersion>$(GitVersion_AssemblySemVer)</AssemblyVersion>
-      <InformationalVersion>$(GitVersion_SemVer)</InformationalVersion>
-    </PropertyGroup>
-  </Target>
 
   <!-- libraries used by all .NET versions -->
   <ItemGroup>
