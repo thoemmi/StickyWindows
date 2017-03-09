@@ -2,27 +2,44 @@
     x:Class="WpfTest.Window2"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+    xmlns:wpf="clr-namespace:StickyWindows.WPF;assembly=StickyWindows.WPF"
+    xmlns:wpfTest="clr-namespace:WpfTest"
     Title="Window2"
     Width="300"
     Height="300"
     MaxWidth="400"
     MaxHeight="400">
+    <Window.Resources>
+        <wpfTest:NullableBooleanToBooleanConverter x:Key="NullableBooleanToBooleanConverter" />
+    </Window.Resources>
+    <i:Interaction.Behaviors>
+        <wpf:StickyWindowBehavior
+            StickOnMove="{Binding ElementName=CbStickOnMove, Path=IsChecked, Converter={StaticResource NullableBooleanToBooleanConverter}}"
+            StickOnResize="{Binding ElementName=CbStickOnResize, Path=IsChecked, Converter={StaticResource NullableBooleanToBooleanConverter}}"
+            StickToOther="{Binding ElementName=CbStickToOther, Path=IsChecked, Converter={StaticResource NullableBooleanToBooleanConverter}}"
+            StickToScreen="{Binding ElementName=CbStickToScreen, Path=IsChecked, Converter={StaticResource NullableBooleanToBooleanConverter}}" />
+    </i:Interaction.Behaviors>
     <StackPanel>
         <CheckBox
+            x:Name="CbStickToScreen"
             Margin="5"
             Content="Stick to screen"
-            IsChecked="{Binding RelativeSource={RelativeSource AncestorType=Window}, Path=StickToScreen}" />
+            IsChecked="True" />
         <CheckBox
+            x:Name="CbStickToOther"
             Margin="5"
             Content="Stick to other"
-            IsChecked="{Binding RelativeSource={RelativeSource AncestorType=Window}, Path=StickToOther}" />
+            IsChecked="True" />
         <CheckBox
+            x:Name="CbStickOnResize"
             Margin="5"
             Content="Stick on resize"
-            IsChecked="{Binding RelativeSource={RelativeSource AncestorType=Window}, Path=StickOnResize}" />
+            IsChecked="True" />
         <CheckBox
+            x:Name="CbStickOnMove"
             Margin="5"
             Content="Stick on move"
-            IsChecked="{Binding RelativeSource={RelativeSource AncestorType=Window}, Path=StickOnMove}" />
+            IsChecked="True" />
     </StackPanel>
 </Window>
