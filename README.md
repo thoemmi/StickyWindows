@@ -92,4 +92,5 @@ Both options support the same properties as the WinForms implementation.
 
 ## Known issues
 
-* thoemmi/stickywindows#1 There's a strange margin when running on Windows 10
+* [#1](https://github.com/thoemmi/StickyWindows/issues/1) There's a strange margin
+  when running on Windows 10
