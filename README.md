@@ -84,14 +84,12 @@ You have two options to make your windows "sticky":
 
 Both options support the same properties as the WinForms implementation.
 
-{{#note}}
-Please note that **StickyWindows.WPF** requires **System.Windows.Interactivity**,
-which is neither part of the library nor a dependency of the NuGet package. The point
-is, there's no official NuGet package for **System.Windows.Interactivity** by Microsoft.
-I decided against delivering this library as part of **StickyWindows.WPF** as it may
-conflict with different versions in other libraries you may be using potentially.
-{{/note}}
+> Please note that **StickyWindows.WPF** requires **System.Windows.Interactivity**,
+> which is neither part of the library nor a dependency of the NuGet package. The point
+> is, there's no official NuGet package for **System.Windows.Interactivity** by Microsoft.
+> I decided against delivering this library as part of **StickyWindows.WPF** as it may
+> conflict with different versions in other libraries you may be using potentially.
 
 ## Known issues
 
-* #1 There's a strange margin when running on Windows 10
+* thoemmi/stickywindows#1 There's a strange margin when running on Windows 10
