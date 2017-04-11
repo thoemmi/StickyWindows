@@ -14,12 +14,7 @@
     <ProjectReference Include="..\StickyWindows\StickyWindows.csproj" />
   </ItemGroup>
 
-  <!-- GitVersion -->
-  <ItemGroup>
-    <PackageReference Include="GitVersionTask" Version="4.0.0-beta0011">
-      <PrivateAssets>All</PrivateAssets>
-    </PackageReference>
-  </ItemGroup>
+  <Import Project="..\common.targets" />
 
   <!-- libraries used by all .NET versions -->
   <ItemGroup>
