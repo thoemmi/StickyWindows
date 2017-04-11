@@ -14,7 +14,7 @@ to both create a repository at GiutHub and publish it as a NuGet package.
 |-------------------|----------------------------------------------------------------|----------------------------------------------------------|
 | AppVeyor          | [![Build status][appveyor-master-badge]][appveyor-master-link] | [![Build status][appveyor-dev-badge]][appveyor-dev-link] |
 | StickyWindows     | [![NuGet][nuget-master-badge]][nuget-master-link]              | [![NuGet][nuget-dev-badge]][nuget-dev-link]              |
-| StickyWindows.Wpf | [![NuGet][nuget-master-badge]][nuget-master-link]              | [![NuGet][nuget-dev-badge]][nuget-dev-link]              |
+| StickyWindows.Wpf | [![NuGet][nuget-master-wpf-badge]][nuget-master-wpf-link]      | [![NuGet][nuget-dev-wpf-badge]][nuget-dev-wpf-link]      |
 
 [appveyor-master-badge]: https://ci.appveyor.com/api/projects/status/ynjy63xrlvrrmseg/branch/master?svg=true
 [appveyor-master-link]:  https://ci.appveyor.com/project/thoemmi/stickywindows/branch/master
@@ -24,6 +24,10 @@ to both create a repository at GiutHub and publish it as a NuGet package.
 [nuget-master-link]:     https://www.nuget.org/packages/StickyWindows
 [nuget-dev-badge]:       https://img.shields.io/nuget/vpre/StickyWindows.svg
 [nuget-dev-link]:        https://www.nuget.org/packages/StickyWindows
+[nuget-master-wpf-badge]:  https://img.shields.io/nuget/v/StickyWindows.WPF.svg
+[nuget-master-wpf-link]:   https://www.nuget.org/packages/StickyWindows.WPF
+[nuget-dev-wpf-badge]:     https://img.shields.io/nuget/vpre/StickyWindows.WPF.svg
+[nuget-dev-wpf-link]:      https://www.nuget.org/packages/StickyWindows.WPF
 
 ## Usage
 
@@ -34,7 +38,7 @@ though. but this shouldn't be an issue as that the WinForms library is part of t
 
 ### WinForms
 
-For WinForms application, use the 
+For WinForms application, use the
 [**StickyWindow**](https://www.nuget.org/packages/StickyWindows)
 package.
 
