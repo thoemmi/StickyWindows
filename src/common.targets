@@ -22,5 +22,5 @@
     Name="FixUpVersion"
     BeforeTargets="_GenerateRestoreProjectSpec"
     DependsOnTargets="GetVersion"
-    Condition="'$(ExcludeRestorePackageImports)' == 'true'" />
+    Condition="'$(GitVersion_Task_targets_Imported)' == 'True'" />
 </Project>
