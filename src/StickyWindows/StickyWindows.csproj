@@ -2,9 +2,9 @@
   <PropertyGroup>
     <TargetFrameworks>net40;net45</TargetFrameworks>
 
-    <Authors>Corneliu I. Tusnea, Riccardo Pietrucci, Thomas Freudenberg</Authors>
+    <Authors>Corneliu I. Tusnea, Thomas Freudenberg</Authors>
     <Company>thoemmi</Company>
-    <Copyright>Copyright © Corneliu I. Tusnea, Riccardo Pietrucci, Thomas Freudenberg 2017</Copyright>
+    <Copyright>Copyright © 2017 Corneliu I. Tusnea, Thomas Freudenberg</Copyright>
     <PackageTags>Window Sticky WinForms</PackageTags>
   </PropertyGroup>
 
