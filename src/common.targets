@@ -6,7 +6,7 @@
 
   <ItemGroup>
     <!-- reference GitVersionTask package -->
-    <PackageReference Include="GitVersionTask" Version="$(GitVersionTaskVersion)" PrivateAssets="All">
+    <PackageReference Include="GitVersionTask" Version="$(GitVersionTaskVersion)" PrivateAssets="All" />
   </ItemGroup>
 
   <!--
