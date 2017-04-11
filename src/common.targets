@@ -14,7 +14,13 @@
     This ugly workaround is necessary because of this NuGet issue: https://github.com/NuGet/Home/issues/4790
   -->
   <ImportGroup Condition="'$(ExcludeRestorePackageImports)' == 'true'">
-    <Import Project="$(UserProfile)\.nuget\packages\gitversiontask\$(GitVersionTaskVersion)\buildMultiTargeting\GitVersionTask.targets" Condition="Exists('$(UserProfile)\.nuget\packages\gitversiontask\$(GitVersionTaskVersion)\buildMultiTargeting\GitVersionTask.targets')" />
+    <Import
+      Project="$(UserProfile)\.nuget\packages\gitversiontask\$(GitVersionTaskVersion)\buildMultiTargeting\GitVersionTask.targets"
+      Condition="Exists('$(UserProfile)\.nuget\packages\gitversiontask\$(GitVersionTaskVersion)\buildMultiTargeting\GitVersionTask.targets')" />
   </ImportGroup>
-  <Target Name="FixUpVersion" BeforeTargets="_GenerateRestoreProjectSpec" DependsOnTargets="GetVersion" />
+  <Target
+    Name="FixUpVersion"
+    BeforeTargets="_GenerateRestoreProjectSpec"
+    DependsOnTargets="GetVersion"
+    Condition="'$(ExcludeRestorePackageImports)' == 'true'" />
 </Project>
