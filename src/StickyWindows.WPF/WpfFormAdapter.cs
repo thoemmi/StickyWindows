@@ -65,7 +65,7 @@ namespace StickyWindows.WPF {
         }
 
         public override Size MaximumSize {
-            get { return new Size(Convert.ToInt32(_window.MaxWidth), Convert.ToInt32(_window.MaxHeight)); }
+            get => new Size(Convert.ToInt32(_window.MaxWidth), Convert.ToInt32(_window.MaxHeight));
             set {
                 _window.MaxWidth = value.Width;
                 _window.MaxHeight = value.Height;
@@ -73,7 +73,7 @@ namespace StickyWindows.WPF {
         }
 
         public override Size MinimumSize {
-            get { return new Size(Convert.ToInt32(_window.MinWidth), Convert.ToInt32(_window.MinHeight)); }
+            get => new Size(Convert.ToInt32(_window.MinWidth), Convert.ToInt32(_window.MinHeight));
             set {
                 _window.MinWidth = value.Width;
                 _window.MinHeight = value.Height;
@@ -81,7 +81,7 @@ namespace StickyWindows.WPF {
         }
 
         public override bool Capture {
-            get { return _window.IsMouseCaptured; }
+            get => _window.IsMouseCaptured;
             set {
                 IInputElement targetToCapture = value ? _window : null;
                 Mouse.Capture(targetToCapture);

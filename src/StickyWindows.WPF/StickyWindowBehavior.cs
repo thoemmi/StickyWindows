@@ -19,28 +19,28 @@ namespace StickyWindows.WPF {
             "StickOnMove", typeof(bool), typeof(StickyWindowBehavior), new PropertyMetadata(true, OnStickOnMoveChanged));
 
         private StickyWindow StickyWindow {
-            get { return (StickyWindow)GetValue(StickyWindowProperty); }
-            set { SetValue(StickyWindowProperty, value); }
+            get => (StickyWindow)GetValue(StickyWindowProperty);
+            set => SetValue(StickyWindowProperty, value);
         }
 
         public bool StickToScreen {
-            get { return (bool)GetValue(StickToScreenProperty); }
-            set { SetValue(StickToScreenProperty, value); }
+            get => (bool)GetValue(StickToScreenProperty);
+            set => SetValue(StickToScreenProperty, value);
         }
 
         public bool StickToOther {
-            get { return (bool)GetValue(StickToOtherProperty); }
-            set { SetValue(StickToOtherProperty, value); }
+            get => (bool)GetValue(StickToOtherProperty);
+            set => SetValue(StickToOtherProperty, value);
         }
 
         public bool StickOnResize {
-            get { return (bool)GetValue(StickOnResizeProperty); }
-            set { SetValue(StickOnResizeProperty, value); }
+            get => (bool)GetValue(StickOnResizeProperty);
+            set => SetValue(StickOnResizeProperty, value);
         }
 
         public bool StickOnMove {
-            get { return (bool)GetValue(StickOnMoveProperty); }
-            set { SetValue(StickOnMoveProperty, value); }
+            get => (bool)GetValue(StickOnMoveProperty);
+            set => SetValue(StickOnMoveProperty, value);
         }
 
         private static void OnStickToScreenChanged(DependencyObject d, DependencyPropertyChangedEventArgs e) {
