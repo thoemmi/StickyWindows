@@ -5,9 +5,8 @@
     <Authors>Corneliu I. Tusnea, Riccardo Pietrucci, Thomas Freudenberg</Authors>
     <Company>thoemmi</Company>
     <Copyright>Copyright © 2017 Corneliu I. Tusnea, Riccardo Pietrucci, Thomas Freudenberg</Copyright>
-    <PackageTags>Window Sticky WinForms</PackageTags>
-
-    <UpdateAssemblyInfo>false</UpdateAssemblyInfo>
+    <Description>Make your top-level WPF windows stick when moved or resized.</Description>
+    <PackageTags>Window Sticky WPF</PackageTags>
   </PropertyGroup>
 
   <ItemGroup>

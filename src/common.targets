@@ -1,4 +1,11 @@
 <Project>
+  <!-- common NuGet package properties -->
+  <PropertyGroup>
+    <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
+    <PackageLicenseUrl>https://github.com/thoemmi/StickyWindows/blob/develop/LICENSE</PackageLicenseUrl>
+    <PackageProjectUrl>https://github.com/thoemmi/StickyWindows</PackageProjectUrl>
+  </PropertyGroup>
+
   <!-- GitVersion version -->
   <PropertyGroup>
     <GitVersionTaskVersion>4.0.0-beta0011</GitVersionTaskVersion>

@@ -5,6 +5,7 @@
     <Authors>Corneliu I. Tusnea, Thomas Freudenberg</Authors>
     <Company>thoemmi</Company>
     <Copyright>Copyright © 2017 Corneliu I. Tusnea, Thomas Freudenberg</Copyright>
+    <Description>Make your top-level WinForms windows stick when moved or resized.</Description>
     <PackageTags>Window Sticky WinForms</PackageTags>
   </PropertyGroup>
 
