@@ -6,11 +6,36 @@ namespace StickyWindows {
     /// Win32 is just a placeholder for some Win32 imported definitions
     /// </summary>
     internal static class Win32 {
+        public enum DWMWINDOWATTRIBUTE : uint {
+            NCRenderingEnabled = 1,
+            NCRenderingPolicy,
+            TransitionsForceDisabled,
+            AllowNCPaint,
+            CaptionButtonBounds,
+            NonClientRtlLayout,
+            ForceIconicRepresentation,
+            Flip3DPolicy,
+            ExtendedFrameBounds,
+            HasIconicBitmap,
+            DisallowPeek,
+            ExcludedFromPeek,
+            Cloak,
+            Cloaked,
+            FreezeRepresentation
+        }
+
         [DllImport("user32.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
         public static extern short GetAsyncKeyState(int vKey);
 
         [DllImport("user32.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
         public static extern IntPtr GetDesktopWindow();
+
+        [DllImport("user32.dll")]
+        [return: MarshalAs(UnmanagedType.Bool)]
+        public static extern bool GetWindowRect(IntPtr hWnd, out RECT lpRect);
+
+        [DllImport("dwmapi.dll")]
+        public static extern int DwmGetWindowAttribute(IntPtr hwnd, DWMWINDOWATTRIBUTE dwAttribute, out RECT pvAttribute, int cbAttribute);
 
         /// <summary>
         /// VK is just a placeholder for VK (VirtualKey) general definitions
@@ -40,8 +65,8 @@ namespace StickyWindows {
         /// HT is just a placeholder for HT (HitTest) definitions
         /// </summary>
         public class HT {
-            public const int HTERROR = (-2);
-            public const int HTTRANSPARENT = (-1);
+            public const int HTERROR = -2;
+            public const int HTTRANSPARENT = -1;
             public const int HTNOWHERE = 0;
             public const int HTCLIENT = 1;
             public const int HTCAPTION = 2;
@@ -74,11 +99,23 @@ namespace StickyWindows {
 
         public class Bit {
             public static int HiWord(int iValue) {
-                return ((iValue >> 16) & 0xFFFF);
+                return (iValue >> 16) & 0xFFFF;
             }
 
             public static int LoWord(int iValue) {
-                return (iValue & 0xFFFF);
+                return iValue & 0xFFFF;
+            }
+        }
+
+        [StructLayout(LayoutKind.Sequential)]
+        public struct RECT {
+            public int Left; // x position of upper-left corner
+            public int Top; // y position of upper-left corner
+            public int Right; // x position of lower-right corner
+            public int Bottom; // y position of lower-right corner
+
+            public override string ToString() {
+                return $"{{Left={Left},Top={Top},Width={Right - Left},Height={Bottom - Top}}}";
             }
         }
     }

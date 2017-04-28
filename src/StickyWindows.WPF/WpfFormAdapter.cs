@@ -1,14 +1,14 @@
 ﻿////////////////////////////////////////////////////////////////////////////////
 // StickyWindows
-// 
+//
 // Copyright (c) 2009 Riccardo Pietrucci
 //
 // This software is provided 'as-is', without any express or implied warranty.
-// In no event will the author be held liable for any damages arising from 
+// In no event will the author be held liable for any damages arising from
 // the use of this software.
-// Permission to use, copy, modify, distribute and sell this software for any 
-// purpose is hereby granted without fee, provided that the above copyright 
-// notice appear in all copies and that both that copyright notice and this 
+// Permission to use, copy, modify, distribute and sell this software for any
+// purpose is hereby granted without fee, provided that the above copyright
+// notice appear in all copies and that both that copyright notice and this
 // permission notice appear in supporting documentation.
 //
 //////////////////////////////////////////////////////////////////////////////////
@@ -24,7 +24,7 @@ using Point = System.Drawing.Point;
 using Size = System.Drawing.Size;
 
 namespace StickyWindows.WPF {
-    public class WpfFormAdapter : IFormAdapter {
+    public class WpfFormAdapter : BaseFormAdapter {
         private readonly Window _window;
         private Point? _origin;
 
@@ -32,9 +32,9 @@ namespace StickyWindows.WPF {
             _window = window;
         }
 
-        public IntPtr Handle => new WindowInteropHelper(_window).Handle;
+        public override IntPtr Handle => new WindowInteropHelper(_window).Handle;
 
-        public Rectangle Bounds {
+        protected override Rectangle InternalBounds {
             get {
                 // converti width ed height ad absolute
                 var widthHeightPointConverted = FromRelativeToDevice(_window.ActualWidth, _window.ActualHeight, _window);
@@ -64,7 +64,7 @@ namespace StickyWindows.WPF {
             }
         }
 
-        public Size MaximumSize {
+        public override Size MaximumSize {
             get { return new Size(Convert.ToInt32(_window.MaxWidth), Convert.ToInt32(_window.MaxHeight)); }
             set {
                 _window.MaxWidth = value.Width;
@@ -72,7 +72,7 @@ namespace StickyWindows.WPF {
             }
         }
 
-        public Size MinimumSize {
+        public override Size MinimumSize {
             get { return new Size(Convert.ToInt32(_window.MinWidth), Convert.ToInt32(_window.MinHeight)); }
             set {
                 _window.MinWidth = value.Width;
@@ -80,7 +80,7 @@ namespace StickyWindows.WPF {
             }
         }
 
-        public bool Capture {
+        public override bool Capture {
             get { return _window.IsMouseCaptured; }
             set {
                 IInputElement targetToCapture = value ? _window : null;
@@ -88,11 +88,11 @@ namespace StickyWindows.WPF {
             }
         }
 
-        public void Activate() {
+        public override void Activate() {
             _window.Activate();
         }
 
-        public Point PointToScreen(Point pointWin) {
+        public override Point PointToScreen(Point pointWin) {
             var p = new System.Windows.Point();
             var resultWpf = ToWinPoint(_window.PointToScreen(p));
             var resultScaled = resultWpf + new Size(pointWin);

@@ -19,40 +19,40 @@ using System.Drawing;
 using System.Windows.Forms;
 
 namespace StickyWindows {
-    public class WinFormAdapter : IFormAdapter {
+    public class WinFormAdapter : BaseFormAdapter {
         private readonly Form _form;
 
         public WinFormAdapter(Form form) {
             _form = form;
         }
 
-        public IntPtr Handle => _form.Handle;
+        public override IntPtr Handle => _form.Handle;
 
-        public Rectangle Bounds {
+        protected override Rectangle InternalBounds {
             get { return _form.Bounds; }
             set { _form.Bounds = value; }
         }
 
-        public Size MaximumSize {
+        public override Size MaximumSize {
             get { return _form.MaximumSize; }
             set { _form.MaximumSize = value; }
         }
 
-        public Size MinimumSize {
+        public override Size MinimumSize {
             get { return _form.MinimumSize; }
             set { _form.MinimumSize = value; }
         }
 
-        public bool Capture {
+        public override bool Capture {
             get { return _form.Capture; }
             set { _form.Capture = value; }
         }
 
-        public void Activate() {
+        public override void Activate() {
             _form.Activate();
         }
 
-        public Point PointToScreen(Point point) {
+        public override Point PointToScreen(Point point) {
             return _form.PointToScreen(point);
         }
     }

@@ -30,7 +30,7 @@ namespace StickyWindows {
         /// <summary>
         /// Global List of registered StickyWindows
         /// </summary>
-        private static readonly List<IFormAdapter> _globalStickyWindows = new List<IFormAdapter>();
+        private static readonly List<BaseFormAdapter> _globalStickyWindows = new List<BaseFormAdapter>();
 
         [Flags]
         private enum ResizeDir {
@@ -65,7 +65,7 @@ namespace StickyWindows {
         private Point _mousePoint; // mouse position
 
         // General Stuff
-        private readonly IFormAdapter _originalForm; // the form
+        private readonly BaseFormAdapter _originalForm; // the form
 
         private Rectangle _formRect; // form bounds
         private Rectangle _formOriginalRect; // bounds before last operation started
@@ -103,7 +103,7 @@ namespace StickyWindows {
         /// Use this to register your MainFrame so the child windows try to stick to it, when your MainFrame is NOT a sticky window
         /// </summary>
         /// <param name="frmExternal">External window that will be used as reference</param>
-        public static void RegisterExternalReferenceForm(IFormAdapter frmExternal) {
+        public static void RegisterExternalReferenceForm(BaseFormAdapter frmExternal) {
             _globalStickyWindows.Add(frmExternal);
         }
 
@@ -119,10 +119,10 @@ namespace StickyWindows {
 
         /// <summary>
         /// Unregister a form from the external references.
-        /// <see cref="RegisterExternalReferenceForm(IFormAdapter)"/>
+        /// <see cref="RegisterExternalReferenceForm(BaseFormAdapter)"/>
         /// </summary>
         /// <param name="frmExternal">External window that will was used as reference</param>
-        public static void UnregisterExternalReferenceForm(IFormAdapter frmExternal) {
+        public static void UnregisterExternalReferenceForm(BaseFormAdapter frmExternal) {
             _globalStickyWindows.Remove(frmExternal);
         }
 
@@ -137,7 +137,7 @@ namespace StickyWindows {
         /// Make the form Sticky
         /// </summary>
         /// <param name="form">Form to be made sticky</param>
-        public StickyWindow(IFormAdapter form) {
+        public StickyWindow(BaseFormAdapter form) {
             _resizingForm = false;
             _movingForm = false;
 
