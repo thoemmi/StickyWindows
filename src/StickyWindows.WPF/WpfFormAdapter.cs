@@ -23,19 +23,24 @@ using System.Windows.Media;
 using Point = System.Drawing.Point;
 using Size = System.Drawing.Size;
 
-namespace StickyWindows.WPF {
-    public class WpfFormAdapter : BaseFormAdapter {
+namespace StickyWindows.WPF
+{
+    public class WpfFormAdapter : BaseFormAdapter
+    {
         private readonly Window _window;
         private Point? _origin;
 
-        public WpfFormAdapter(Window window) {
+        public WpfFormAdapter(Window window)
+        {
             _window = window;
         }
 
         public override IntPtr Handle => new WindowInteropHelper(_window).Handle;
 
-        protected override Rectangle InternalBounds {
-            get {
+        protected override Rectangle InternalBounds
+        {
+            get
+            {
                 // converti width ed height ad absolute
                 var widthHeightPointConverted = FromRelativeToDevice(_window.ActualWidth, _window.ActualHeight, _window);
 
@@ -48,7 +53,8 @@ namespace StickyWindows.WPF {
                 // imposta
                 return new Rectangle(pStart.X, pStart.Y, pEnd.X, pEnd.Y);
             }
-            set {
+            set
+            {
                 // converti width ed height a relative
                 var widthHeightPointConverted = FromDeviceToRelative(value.Width, value.Height, _window);
                 // converti coordinate da screen a relative: il video non si deve alterare!
@@ -64,45 +70,55 @@ namespace StickyWindows.WPF {
             }
         }
 
-        public override Size MaximumSize {
-            get => new Size(Convert.ToInt32(_window.MaxWidth), Convert.ToInt32(_window.MaxHeight));
-            set {
+        public override Size MaximumSize
+        {
+            get => new Size(Convert.ToInt32(_window.MaxWidth > int.MaxValue ? int.MaxValue : _window.MaxWidth), Convert.ToInt32(_window.MaxHeight > int.MaxValue ? int.MaxValue : _window.MaxHeight));
+            set
+            {
                 _window.MaxWidth = value.Width;
                 _window.MaxHeight = value.Height;
             }
         }
 
-        public override Size MinimumSize {
-            get => new Size(Convert.ToInt32(_window.MinWidth), Convert.ToInt32(_window.MinHeight));
-            set {
+        public override Size MinimumSize
+        {
+            get => new Size(Convert.ToInt32(_window.MinWidth < int.MinValue ? int.MinValue : _window.MinWidth), Convert.ToInt32(_window.MinHeight < int.MinValue ? int.MinValue : _window.MinHeight));
+            set
+            {
                 _window.MinWidth = value.Width;
                 _window.MinHeight = value.Height;
             }
         }
 
-        public override bool Capture {
+        public override bool Capture
+        {
             get => _window.IsMouseCaptured;
-            set {
+            set
+            {
                 IInputElement targetToCapture = value ? _window : null;
                 Mouse.Capture(targetToCapture);
             }
         }
 
-        public override void Activate() {
+        public override void Activate()
+        {
             _window.Activate();
         }
 
-        public override Point PointToScreen(Point pointWin) {
+        public override Point PointToScreen(Point pointWin)
+        {
             var p = new System.Windows.Point();
             var resultWpf = ToWinPoint(_window.PointToScreen(p));
             var resultScaled = resultWpf + new Size(pointWin);
             return resultScaled;
         }
 
-        private Point GetWindowOrigin() {
+        private Point GetWindowOrigin()
+        {
             // TODO: alla prima invocazione far andare in cache per migliorare perf ed evitare errori di approx
             //return new Point(-4, -28);
-            if (!_origin.HasValue) {
+            if (!_origin.HasValue)
+            {
                 var currentWinPointConverted = FromRelativeToDevice(-_window.Left, -_window.Top, _window);
                 var locationFromScreen = PointToScreen(ToWinPoint(currentWinPointConverted));
                 _origin = new Point(-locationFromScreen.X, -locationFromScreen.Y);
@@ -111,27 +127,32 @@ namespace StickyWindows.WPF {
             return _origin.Value;
         }
 
-        private static System.Windows.Point FromDeviceToRelative(double x, double y, Visual workingVisual) {
+        private static System.Windows.Point FromDeviceToRelative(double x, double y, Visual workingVisual)
+        {
             var widthHeightPoint = new Point(Convert.ToInt32(x), Convert.ToInt32(y));
             var source = PresentationSource.FromVisual(workingVisual);
             return source.CompositionTarget.TransformFromDevice.Transform(ToWpfPoint(widthHeightPoint));
         }
 
-        private static System.Windows.Point FromRelativeToDevice(double x, double y, Visual workingVisual) {
+        private static System.Windows.Point FromRelativeToDevice(double x, double y, Visual workingVisual)
+        {
             var widthHeightPoint = new Point(Convert.ToInt32(x), Convert.ToInt32(y));
             var source = PresentationSource.FromVisual(workingVisual);
             return source.CompositionTarget.TransformToDevice.Transform(ToWpfPoint(widthHeightPoint));
         }
 
-        private Point PointFromScreen(Point pointWin) {
+        private Point PointFromScreen(Point pointWin)
+        {
             return ToWinPoint(_window.PointFromScreen(ToWpfPoint(pointWin)));
         }
 
-        private static System.Windows.Point ToWpfPoint(Point point) {
+        private static System.Windows.Point ToWpfPoint(Point point)
+        {
             return new System.Windows.Point(point.X, point.Y);
         }
 
-        private static Point ToWinPoint(System.Windows.Point point) {
+        private static Point ToWinPoint(System.Windows.Point point)
+        {
             return new Point(Convert.ToInt32(point.X), Convert.ToInt32(point.Y));
         }
     }
