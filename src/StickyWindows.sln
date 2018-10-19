@@ -7,12 +7,13 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WinTest", "WinTest\WinTest.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WpfTest", "WpfTest\WpfTest.csproj", "{EDC6DE6A-C1EA-4192-AB34-63E6F4E6A835}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StickyWindows", "StickyWindows\StickyWindows.csproj", "{AF76FEA7-CD9D-4093-B617-BC9C44DE99C6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StickyWindows", "StickyWindows\StickyWindows.csproj", "{AF76FEA7-CD9D-4093-B617-BC9C44DE99C6}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StickyWindows.WPF", "StickyWindows.WPF\StickyWindows.WPF.csproj", "{E4254CAE-FB08-431D-9F6E-65404063BFF5}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{0B247CD4-6CCD-48A8-9BA0-8962FBE2DC8E}"
 	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
 		..\appveyor.yml = ..\appveyor.yml
 		..\README.md = ..\README.md
 	EndProjectSection
@@ -42,5 +43,8 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {DDCC2974-531D-4074-920E-AB8735292B48}
 	EndGlobalSection
 EndGlobal

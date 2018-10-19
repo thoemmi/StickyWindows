@@ -94,7 +94,19 @@ Both options support the same properties as the WinForms implementation.
 > I decided against delivering this library as part of **StickyWindows.WPF** as it may
 > conflict with different versions in other libraries you may be using potentially.
 
-## Known issues
+## Version History
 
-* [#1](https://github.com/thoemmi/StickyWindows/issues/1) There's a strange margin
-  when running on Windows 10
+### v0.3 (not released yet)
+
+* Fixed the MaximumSize and MinimumSize issue reported in #5 (Thanks to @lucky3)
+* Added [SourceLink](https://github.com/dotnet/sourcelink) support
+
+### v0.2 (11-Apr-2017)
+
+* Fixed strange margin when running on Windows 10 ([#1](https://github.com/thoemmi/StickyWindows/issues/1))
+
+### v0.1 (10-Mar-2017)
+
+* Inital Release
+
+

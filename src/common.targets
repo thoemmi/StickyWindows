@@ -4,30 +4,9 @@
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
     <PackageLicenseUrl>https://github.com/thoemmi/StickyWindows/blob/develop/LICENSE</PackageLicenseUrl>
     <PackageProjectUrl>https://github.com/thoemmi/StickyWindows</PackageProjectUrl>
+
+    <PublishRepositoryUrl>true</PublishRepositoryUrl>
+    <EmbedUntrackedSources>true</EmbedUntrackedSources>
+    <AllowedOutputExtensionsInPackageBuildOutputFolder>$(AllowedOutputExtensionsInPackageBuildOutputFolder);.pdb</AllowedOutputExtensionsInPackageBuildOutputFolder>
   </PropertyGroup>
-
-  <!-- GitVersion version -->
-  <PropertyGroup>
-    <GitVersionTaskVersion>4.0.0-beta0011</GitVersionTaskVersion>
-  </PropertyGroup>
-
-  <ItemGroup>
-    <!-- reference GitVersionTask package -->
-    <PackageReference Include="GitVersionTask" Version="$(GitVersionTaskVersion)" PrivateAssets="All" />
-  </ItemGroup>
-
-  <!--
-    Import GitVersionTask target
-    This ugly workaround is necessary because of this NuGet issue: https://github.com/NuGet/Home/issues/4790
-  -->
-  <ImportGroup Condition="'$(ExcludeRestorePackageImports)' == 'true'">
-    <Import
-      Project="$(UserProfile)\.nuget\packages\gitversiontask\$(GitVersionTaskVersion)\buildMultiTargeting\GitVersionTask.targets"
-      Condition="Exists('$(UserProfile)\.nuget\packages\gitversiontask\$(GitVersionTaskVersion)\buildMultiTargeting\GitVersionTask.targets')" />
-  </ImportGroup>
-  <Target
-    Name="FixUpVersion"
-    BeforeTargets="_GenerateRestoreProjectSpec"
-    DependsOnTargets="GetVersion"
-    Condition="'$(GitVersion_Task_targets_Imported)' == 'True'" />
 </Project>
