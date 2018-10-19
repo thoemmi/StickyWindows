@@ -11,6 +11,13 @@
 
   <Import Project="..\common.targets" />
 
+  <ItemGroup>
+    <PackageReference Include="GitVersionTask" Version="4.0.0">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
+    </PackageReference>
+  </ItemGroup>
+
   <!-- libraries used by all .NET versions -->
   <ItemGroup>
     <Reference Include="System.Windows.Forms"></Reference>

@@ -8,6 +8,12 @@
     <Description>Make your top-level WPF windows stick when moved or resized.</Description>
     <PackageTags>Window Sticky WPF</PackageTags>
   </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="GitVersionTask" Version="4.0.0">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
+    </PackageReference>
+  </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\StickyWindows\StickyWindows.csproj" />
