@@ -65,7 +65,7 @@ namespace StickyWindows.WPF {
         }
 
         public override Size MaximumSize {
-            get => new Size(Convert.ToInt32(_window.MaxWidth), Convert.ToInt32(_window.MaxHeight));
+            get => new Size(Convert.ToInt32(_window.MaxWidth > int.MaxValue ? int.MaxValue : _window.MaxWidth), Convert.ToInt32(_window.MaxHeight > int.MaxValue ? int.MaxValue : _window.MaxHeight));
             set {
                 _window.MaxWidth = value.Width;
                 _window.MaxHeight = value.Height;
@@ -73,7 +73,7 @@ namespace StickyWindows.WPF {
         }
 
         public override Size MinimumSize {
-            get => new Size(Convert.ToInt32(_window.MinWidth), Convert.ToInt32(_window.MinHeight));
+            get => new Size(Convert.ToInt32(_window.MinWidth < int.MinValue ? int.MinValue : _window.MinWidth), Convert.ToInt32(_window.MinHeight < int.MinValue ? int.MinValue : _window.MinHeight));
             set {
                 _window.MinWidth = value.Width;
                 _window.MinHeight = value.Height;
